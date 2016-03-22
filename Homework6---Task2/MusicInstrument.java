@@ -7,6 +7,6 @@ abstract public class MusicInstrument {public abstract String getType();
 
     @Override
     public String toString() {
-        return "Animal{"+getType()+"}";
+        return "MusicalInstrument{"+getType()+"}";
     }
 }
