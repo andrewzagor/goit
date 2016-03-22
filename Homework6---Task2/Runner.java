@@ -6,11 +6,11 @@ import java.util.*;
  */
 public class Runner {
     public static void main(String[] args) {
-    }
+
     MusicShop shop = new MusicShop();
-    shop.setGuitars (21);
-    shop.setPianos(15);
-    shop.setTrumpets(9);
+        shop.setGuitars(25);
+        shop.setPianos(15);
+        shop.setTrumpets(9);
 
     System.out.println(shop);
 
@@ -19,19 +19,19 @@ public class Runner {
     order.put("piano", 8);
     order.put("trumpets", 4);
 
-    List<Instrument> guitarToRemove = prepareOrder(shop, order);
+    List<MusicInstrument> guitarToRemove = prepareOrder(shop, order);
     System.out.println("removed guitar: " + guitarToRemove.size());
 
-    List<Instrument> pianoToRemove = prepareOrder(shop, order);
+    List<MusicInstrument> pianoToRemove = prepareOrder(shop, order);
     System.out.println("removed guitar: " + pianoToRemove.size());
 
-    List<Instrument> trumpetToRemove = prepareOrder(shop, order);
+    List<MusicInstrument> trumpetToRemove = prepareOrder(shop, order);
     System.out.println("removed guitar: " + trumpetToRemove.size());
 
     System.out.println(shop);
 }
 
-    private static List<Instrument> prepareOrder(MusicShop shop, Map<String, Integer> order) {
+    private static List<MusicInstrument> prepareOrder(MusicShop shop, Map<String, Integer> order) {
         int numberOfGuitarsToRemove = order.get("guitar");
         int numberOfPianosToRemove = order.get("piano");
         int numberOfTrumpetsToRemove = order.get("trumpet");
@@ -44,7 +44,7 @@ public class Runner {
         shop.setPianos(shop.getPianos() - numberOfPianosToRemove);
         shop.setTrumpets(shop.getTrumpets() - numberOfTrumpetsToRemove);
 
-        List<Instrument> result = new ArrayList<>();
+        List<MusicInstrument> result = new ArrayList<>();
         for (int i = 0; i < numberOfGuitarsToRemove; i++) {
             result.add(new Guitar());
         }
