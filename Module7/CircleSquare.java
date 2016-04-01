@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Created by ZahornyiAI on 01.04.2016.
  */
 public class CircleSquare {
-    static double Circle (double radius){
+    static double circle (double radius){
         double square;
         square=radius*radius*3.14159; // Антипаттерн Magic numbers, необходио использовать Math.PI
         return square;
