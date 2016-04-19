@@ -24,7 +24,7 @@ public class RightRectangleMethodTest {
         double lowerBorder=5;
         double upperBorder=10;
         int countOfSteps=2;
-        CenterRectangleMethod centerRectangleMethod = new CenterRectangleMethod();
+        CenterRectangleMethod centerRectangleMethod = new CenterRectangleMethod(expression);
         ConvertFunctionToRPN convertFunctionToRPN = new ConvertFunctionToRPN();
         Double result;
         Double deltaX = (upperBorder - lowerBorder) / countOfSteps;
