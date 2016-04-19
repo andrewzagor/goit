@@ -1,0 +1,135 @@
+package ProjectNew;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+/**
+ * Created by ZahornyiAI on 19.04.2016.
+ */
+public class Runner
+{
+    public static void main (String[] args){
+        boolean correctValue = false;
+        Double upperBorder = null;
+        Double lowerBorder = null;
+
+
+        System.out.println("Input your integral. Use operators like /, *, -, + ,. ,sin. cos. tg, arctan, (, )." +
+                " Variable must be named \"x\", \"y\" or \"z\\. For example, sin (((x) * 10) / 25)^2): ");
+        Scanner sc = new Scanner(System.in);
+        String expression = sc.nextLine();
+
+        LowerUpperLimits lowerUpperLimits = new LowerUpperLimits();
+
+
+        while (!correctValue) {
+            System.out.print("Input lower borders: ");
+            try {
+                sc = new Scanner(System.in);
+                lowerBorder = sc.nextDouble();
+                correctValue = true;
+                lowerUpperLimits.setLowerBorder(lowerBorder);
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR: it must be a number.");
+                correctValue = false;
+            }
+        }
+
+
+        correctValue = false;
+        while (!correctValue) {
+            System.out.print("Input upper borders: ");
+            try {
+                sc = new Scanner(System.in);
+                upperBorder = sc.nextDouble();
+                if (!lowerBorder.equals(upperBorder)) {
+                    lowerUpperLimits.setUpperBorder(upperBorder);
+                    correctValue = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR: it must be a number.");
+                correctValue = false;
+            }
+        }
+
+        if (!lowerUpperLimits.correctBorderInput(lowerUpperLimits.getLowerBorder(), lowerUpperLimits.getUpperBorder())) {
+            System.out.println("Upper border is smaller than lower border. The boundaries are reversed.");
+        }
+
+
+        correctValue = false;
+        while (!correctValue) {
+            System.out.print("Input count of steps, please: ");
+            try {
+                sc = new Scanner(System.in);
+                Integer countOfSteps = sc.nextInt();
+                if (countOfSteps > 0) {
+                    if (lowerUpperLimits.correctCountOfStepsInput(lowerUpperLimits.getLowerBorder(),
+                            lowerUpperLimits.getUpperBorder(), countOfSteps))
+                    {
+                        lowerUpperLimits.setCountOfSteps(countOfSteps);
+                        correctValue = true;
+                    }
+                } else {
+                    System.out.println("ERROR: Count of steps must be more than 0.");
+                    correctValue = false;
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR: it must be an integer number.");
+                correctValue = false;
+            }
+        }
+
+
+
+
+        correctValue = false;
+        boolean isInteger = false;
+        Integer choice = null;
+        while (!correctValue) {
+            while (!isInteger) {
+                System.out.println("1 - The method of LEFT corner rectangles\n " +
+                        "2 - The method of CENTER corner rectangles\n " +
+                        "3 - The method of RIGHT corner rectangles\n");
+                try {
+                    sc = new Scanner(System.in);
+                    choice = sc.nextInt();
+                    isInteger = true;
+                } catch (InputMismatchException e) {
+                    System.out.println("ERROR: Input a number, please.");
+                    isInteger = false;
+                }
+            }
+            switch (choice) {
+                case 1:
+                    LeftRectangleMethod leftRectangleMethod = new LeftRectangleMethod(expression);
+                    Double area = leftRectangleMethod.leftCornerRM(lowerUpperLimits.getLowerBorder(),
+                            lowerUpperLimits.getUpperBorder(), lowerUpperLimits.getCountOfSteps());
+                    System.out.printf("Area of integral is %5.5f" , area);
+                    correctValue = true;
+                    break;
+                case 2: //метод центральных прямоугольников
+                    CenterRectangleMethod centerCornerRectangleMethod = new CenterRectangleMethod(expression);
+                    Double areaCC = centerCornerRectangleMethod.centerCornerRM(lowerUpperLimits.getLowerBorder(),
+                            lowerUpperLimits.getUpperBorder(), lowerUpperLimits.getCountOfSteps());
+                    System.out.printf("Area of integral is %5.5f" , areaCC);
+                    correctValue = true;
+                    break;
+                case 3: //метод правых прямоугольников
+                    RightRectangleMethod rightRectangleMethod = new RightRectangleMethod(expression);
+                    Double areaRC = rightRectangleMethod.rightCornerRM(lowerUpperLimits.getLowerBorder(),
+                            lowerUpperLimits.getUpperBorder(), lowerUpperLimits.getCountOfSteps());
+                    System.out.printf("Area of integral is %5.5f" , areaRC);
+                    correctValue = true;
+                    break;
+                default:
+                    isInteger = false;
+                    System.out.println("Make good choice");
+                    correctValue = false;
+                    break;
+            }
+        }
+
+    }
+}
