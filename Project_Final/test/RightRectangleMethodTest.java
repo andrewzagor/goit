@@ -24,8 +24,8 @@ public class RightRectangleMethodTest {
         double lowerBorder=5;
         double upperBorder=10;
         int countOfSteps=2;
-        Project.CenterRectangleMethod centerRectangleMethod = new Project.CenterRectangleMethod();
-        Project.ConvertFunctionToRPN convertFunctionToRPN = new ConvertFunctionToRPN();
+        CenterRectangleMethod centerRectangleMethod = new CenterRectangleMethod();
+        ConvertFunctionToRPN convertFunctionToRPN = new ConvertFunctionToRPN();
         Double result;
         Double deltaX = (upperBorder - lowerBorder) / countOfSteps;
         Double[] array = new Double[countOfSteps];
