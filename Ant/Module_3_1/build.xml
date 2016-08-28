@@ -1,0 +1,29 @@
+<project name="module_3_1" basedir = ".">
+
+    <property name="src" location = "src/Module_3_1_Enterpise"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+
+    <target name="init">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${dist}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir ="${build}"/>
+        <delete dir ="${dist}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src}" destdir="${build}" source="1.8" target="1.8"/>
+    </target>
+
+    <target name="dist" depends="compile">
+        <jar destfile="${dist}/module3_1.jar">
+            <fileset dir="${build}"/>
+            <manifest>
+                <attribute name="Main-Class" value="Module_3_1_Enterpise/ThreadsApp"/>
+            </manifest>
+        </jar>
+    </target>
+</project>
