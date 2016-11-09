@@ -1,9 +1,9 @@
 package com.ua.homework_7_2.controller;
 
 import org.springframework.transaction.annotation.Transactional;
-import com.ua.homework_7_1.hibernate.model.Employee;
-import com.ua.homework_7_1.hibernate.model.Position;
-import com.ua.homework_7_1.hibernate.model.dao.EmployeeDao;
+import com.ua.homework_7_2.hibernate.model.Employee;
+import com.ua.homework_7_2.hibernate.model.Position;
+import com.ua.homework_7_2.hibernate.model.dao.EmployeeDao;
 
 import java.util.HashSet;
 import java.util.List;
