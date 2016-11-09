@@ -1,9 +1,9 @@
 package com.ua.homework_7_2.controller;
 
 import org.springframework.transaction.annotation.Transactional;
-import com.ua.homework_7_1.hibernate.model.Dish;
-import com.ua.homework_7_1.hibernate.model.DishCategory;
-import com.ua.homework_7_1.hibernate.model.dao.DishDao;
+import com.ua.homework_7_2.hibernate.model.Dish;
+import com.ua.homework_7_2.hibernate.model.DishCategory;
+import com.ua.homework_7_2.hibernate.model.dao.DishDao;
 
 import java.util.List;
 import java.util.Set;
