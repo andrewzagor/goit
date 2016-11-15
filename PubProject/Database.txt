@@ -1,0 +1,52 @@
+CREATE TABLE pubmenu
+(
+  id bigint NOT NULL DEFAULT PRIMARY KEY,
+  name VARCHAR(32),
+  kind_of_beer VARCHAR(32),
+  volume VARCHAR(32),
+  price DOUBLE,
+  description VARCHAR(4000),
+)
+ALTER TABLE public.dish
+  OWNER TO root;
+
+********************************************
+
+CREATE TABLE storage
+(
+  id bigint NOT NULL DEFAULT PRIMARY KEY,
+  name_product VARCHAR(32),
+  count DOUBLE,
+)
+ALTER TABLE public.dish
+  OWNER TO root;
+
+********************************************
+
+CREATE TABLE orderpub
+(
+id bigint NOT NULL DEFAULT PRIMARY KEY,
+name_beer VARCHAR(32),
+count DOUBLE,
+price DOUBLE
+)
+
+********************************************
+
+
+CREATE TABLE employee (
+
+id bigint NOT NULL DEFAULT PRIMARY KEY,
+first_name VARCHAR(32),
+second_name VARCHAR(32),
+birthday VARCHAR(4),
+salary DOUBLE,
+position VARCHAR(32)
+)
+
+********************************************
+
+CREATE TABLE drink (
+id bigint NOT NULL DEFAULT PRIMARY KEY,
+drink_name VARCHAR(32)
+)
